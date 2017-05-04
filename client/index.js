@@ -6,7 +6,7 @@ const NotesList = require('./NotesList')
 const render = () => {
   const props = store.getState()
   ReactDOM.render(
-    <div className='app'>
+    <div className='container'>
       <div className='ui segment'>
         <NotesList notes={props}/>
       </div>
