@@ -14,12 +14,12 @@ const Note = props => {
 function NotesList(props) {
   const { notes } = props
   return (
-    <div className='ui inverted relaxed divided list'>
+    <div className='ui relaxed divided list'>
       {
         notes.map((note, i) => {
           console.log(notes)
           return (
-            <Note key={ i } date={ note.title } text={ note.text}/>
+            <Note key={ i } title={ note.title } text={ note.text}/>
           )
         })
       }

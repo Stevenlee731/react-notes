@@ -7,8 +7,8 @@ const render = () => {
   const props = store.getState()
   ReactDOM.render(
     <div className='app'>
-      <div className='ui inverted segment'>
-        <NotesList/>
+      <div className='ui segment'>
+        <NotesList notes={props}/>
       </div>
     </div>,
     document.querySelector('#app')
