@@ -10,7 +10,6 @@ const initialState = [
 ]
 
 function notes(state = initialState, action) {
-  console.log(action.text)
   switch (action.type) {
     case "NOTE_CREATED":
       return state.concat({
