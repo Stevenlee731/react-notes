@@ -27,7 +27,7 @@ function NotesForm(props) {
       </div>
       <button
         type='submit'
-        className='ui teal submit button'>Submit</button>
+        className='ui right teal submit button'>Submit</button>
     </form>
   )
 }

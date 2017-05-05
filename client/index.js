@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom')
 const store = require('./store')
 const NotesList = require('./NotesList')
 const NotesForm = require('./NotesForm')
+window.store = store
 
 const render = () => {
   const state = store.getState()
@@ -11,10 +12,10 @@ const render = () => {
     <div className='app'>
       <div className='top ui main text container'>
         <div className='ui stacked segment'>
-          <NotesForm text={state.noteInput}/>
+          <NotesForm text={ state.noteInput }/>
         </div>
         <div className='ui stacked segment'>
-          <NotesList notes={state.notes}/>
+          <NotesList notes={ state.notes }/>
         </div>
       </div>
     </div>,
