@@ -2,13 +2,20 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const store = require('./store')
 const NotesList = require('./NotesList')
+const NotesForm = require('./NotesForm')
 
 const render = () => {
-  const props = store.getState()
+  const state = store.getState()
+  console.log('state', state)
   ReactDOM.render(
     <div className='app'>
-      <div className='ui segment'>
-        <NotesList notes={props}/>
+      <div className='top ui main text container'>
+        <div className='ui stacked segment'>
+          <NotesForm text={state.noteInput}/>
+        </div>
+        <div className='ui stacked segment'>
+          <NotesList notes={state.notes}/>
+        </div>
       </div>
     </div>,
     document.querySelector('#app')
@@ -17,11 +24,3 @@ const render = () => {
 
 store.subscribe(render)
 render()
-
-setInterval(() => {
-  store.dispatch({
-    type: 'ADD_NOTE',
-    title: 'Note 2',
-    text: "this is the second note"
-  })
-}, 3000)
