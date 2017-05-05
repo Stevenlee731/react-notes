@@ -1,17 +1,19 @@
-const Redux = require('redux')
+const { createStore, combineReducers } = require('redux')
 
 const initialState = [
   {
-    title: 'Note 1',
     text: 'This is the first note'
+  },
+  {
+    text: 'This is the second note'
   }
 ]
 
 function notes(state = initialState, action) {
+  console.log(action.text)
   switch (action.type) {
-    case "ADD_NOTE":
+    case "NOTE_CREATED":
       return state.concat({
-        title: action.title,
         text: action.text
       })
     default:
@@ -19,6 +21,22 @@ function notes(state = initialState, action) {
   }
 }
 
-const store = Redux.createStore(notes)
+function noteInput(state = '', action) {
+  switch (action.type) {
+    case "INPUT_CHANGED":
+      return action.value
+    case "NOTE_CREATED":
+      return ''
+    default:
+      return state
+  }
+}
+
+const reducer = combineReducers({
+  notes,
+  noteInput
+ })
+
+const store = createStore(reducer)
 
 module.exports = store
