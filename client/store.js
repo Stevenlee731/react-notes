@@ -1,20 +1,13 @@
 const { createStore, combineReducers } = require('redux')
 
-const initialState = [
-  {
-    text: 'This is the first note'
-  },
-  {
-    text: 'This is the second note'
-  }
-]
-
-function notes(state = initialState, action) {
+function notes(state = [], action) {
   switch (action.type) {
     case "NOTE_CREATED":
       return state.concat({
         text: action.text
       })
+    case "NOTES_LOADED":
+      return state.concat(action.notes)
     default:
       return state
   }
