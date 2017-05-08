@@ -11,9 +11,17 @@ function NotesForm(props) {
   }
   const handleSubmit = event => {
     event.preventDefault()
-    store.dispatch({
-      type: 'NOTE_CREATED',
-      text: text
+    const note = { text: text }
+    fetch('/notes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(note)
+    })
+    .then(() => {
+      store.dispatch({
+        type: 'NOTE_CREATED',
+        text: text
+      })
     })
   }
   return (

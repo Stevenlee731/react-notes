@@ -25,3 +25,9 @@ const render = () => {
 
 store.subscribe(render)
 render()
+
+fetch('/notes')
+  .then(res => res.json())
+  .then(notes => {
+    store.dispatch({ type: 'NOTES_LOADED', notes })
+  })
